@@ -104,7 +104,7 @@ const page = async () => {
         <Stats allProjects={jProjects} />
       </div>
     
-      
+      <div className=""></div>
     </section>
   )
 }

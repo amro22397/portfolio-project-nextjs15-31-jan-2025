@@ -28,17 +28,25 @@ import { Project } from "../../../models/project";
 
 import EditDeleteButtons from '../../../components/EditDeleteButtons'
 import { getSession } from '@/actions/getUser';
+import { headers } from "next/headers";
 
 
 
-type PageProps = {
-    params: {
-        id: string;
-    }
-};
 
-export default async function page(props: PageProps) {
-    const id = props.params.id
+// type PageProps = {
+//     params: {
+//         id: string;
+//     }
+// };
+
+export default async function page(/*props: PageProps*/) {
+    // const id = props.params.id
+
+    const header = await headers();
+const pathname = header.get('referer')
+console.log('pathName:', pathname);
+
+const id = pathname?.split('/')[4]
 
     mongoose.connect(process.env.MONGO_URL as string)
 
@@ -63,6 +71,7 @@ export default async function page(props: PageProps) {
             gap-12">
 
                 <pre className='hidden'>{JSON.stringify(jProject, null, 2)}</pre>
+                <pre className='hidden'>{id}</pre>
 
                 <div className=" xl:h-[460px] flex flex-col
                 mx-0 max-xl:mx-4 max-w-full ">

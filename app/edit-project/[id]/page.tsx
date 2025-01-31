@@ -6,13 +6,12 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { getSession } from "@/actions/getUser";
 
-// type Params = {
-//   params: {
-//     id: string;
-//   };
-// };
+type PageProps = {
+  params: { id: string };
+};
 
-const page = async ({ params }: { params: { id: string } }) => {
+
+const page = async ({ params }: PageProps) => {
   const id = params.id;
 
   console.log(id)
@@ -173,7 +172,7 @@ const page = async ({ params }: { params: { id: string } }) => {
   ) {
     return (
       <div className="text-center text-2xl font-bold">
-        <pre>{id}</pre>
+        <pre className="hidden">{id}</pre>
         Only admin can access this page...
       </div>
     );
@@ -182,7 +181,7 @@ const page = async ({ params }: { params: { id: string } }) => {
   return (
     <div className="flex flex-col items-center w-full">
 
-      <pre>{id}</pre>
+      <pre className="hidden">{id}</pre>
       
       <Link
         href="/projects"

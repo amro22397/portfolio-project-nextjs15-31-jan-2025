@@ -23,36 +23,40 @@ import { Project } from "../../../models/project";
 
 import EditDeleteButtons from '../../../components/EditDeleteButtons'
 import axios from "axios";
+import useSWR from "swr";
 
 
-const ProjectById = ({ id, email }: { 
+const ProjectById = ({ id, email, jProject }: { 
     id: string | undefined,
-    email: string | null | undefined
+    email: string | null | undefined,
+    jProject: any,
  }) => {
 
-    const [jProject, setJProject] = useState(null);
+    // const [jProject, setJProject] = useState(null);
 
-    const fetchProjectById = async () => {
-        const res = await axios.get(`/api/project?id=${id}`)
-        setJProject(res.data)
-        console.log(res.data);
+    // const fetchProjectById = async() => {
+    //     await axios.get(`/api/project?id=${id}`)
+    //     .then(res => {
+    //         console.log(res.data);
+    //         setJProject(res.data.data);
+    //         console.log(jProject)
+    //     })
+    //     .catch(err => {
+    //         console.log(err);
+    //     })
+    
+    // }
 
-        
-        console.log(jProject)
-
-
-    }
-
-    useEffect(() => {
-        fetchProjectById();
-    }, []);
+    // useEffect(() => {
+    //     fetchProjectById();
+    // }, []);
 
   return (
     <div className="container flex flex-col max-xl:items-center justify-center mx-auto
         mt-9 mb-40 overflow-x-hidden">
 
 
-            {/* <div className="flex flex-col xl:flex-row xl:gap-[30px]
+            <div className="flex flex-col xl:flex-row xl:gap-[30px]
             gap-12">
 
                 <pre className='hidden'>{JSON.stringify(jProject, null, 2)}</pre>
@@ -104,7 +108,7 @@ const ProjectById = ({ id, email }: {
                         </div>
                         
                         <div className="flex flex-wrap gap-6
-                        text-md font-semibold mt-2">
+                        text-md font-semibold mt-2 mx-[6px]">
                             {jProject.technologiesArray.map((tech: any, index: number) => (
                                 <span 
                                 key={index} className="bg-gray-300 px-4 py-[2.5px] rounded-full
@@ -115,11 +119,11 @@ const ProjectById = ({ id, email }: {
                         </div>
 
                         
-                        <div className="w-[95%] text-lg
+                        {/* <div className="w-[95%] text-lg
                          px-3 py-2 rounded-md">
                             <span className='font-bold
                             text-green-600 hidden'>{project.technologies}</span>
-                        </div>
+                        </div> */}
                         
                         
 
@@ -151,7 +155,7 @@ const ProjectById = ({ id, email }: {
                 </div>
 
                 <SwiperImage project={jProject} />
-            </div> */}
+            </div>
 
             
 

@@ -10,6 +10,7 @@ import "swiper/css"; */
 import { getSession } from '@/actions/getUser';
 import { headers } from "next/headers";
 import ProjectById from './ProjectById';
+import { Project } from '@/models/project';
 
 
 
@@ -37,6 +38,13 @@ const id = pathname?.split('/')[4]
     // const project = await Project.findById({_id: id})
     // const jProject = JSON.parse(JSON.stringify(project))
 
+    const allProjects = await Project.find({}, {}, {sort: {createdAt: -1}})
+
+    const jAllProjects = JSON.parse(JSON.stringify(allProjects));
+
+    const project = jAllProjects.find((project: any) => project._id === id);
+    const jProject = JSON.parse(JSON.stringify(project));
+
 
     // console.log(project)
 
@@ -44,6 +52,6 @@ const id = pathname?.split('/')[4]
       console.log(session?.user?.email)
 
   return (
-    <ProjectById id={id} email={session?.user?.email} />
+    <ProjectById id={id} email={session?.user?.email} jProject={jProject} />
   )
 }

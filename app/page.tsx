@@ -59,7 +59,8 @@ const page = async () => {
                grid-cols-3 gap-2 xl:gap-y-4 text-4xl gap-y-4
               text-gray-800 mb-8">
               {skills.skillList.map((skill, index) => (
-                <div className='flex flex-col items-center
+                <div key={index}
+                className='flex flex-col items-center
                 hover:transform hover:scale-105 hover:text-gray-900
                 dark:text-slate-200 dark:hover:text-slate-300'>
 

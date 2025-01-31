@@ -6,14 +6,14 @@ import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { getSession } from "@/actions/getUser";
 
-type Params = {
-  params: {
-    id: string;
-  };
-};
+// type Params = {
+//   params: {
+//     id: string;
+//   };
+// };
 
-const page = async (params: Params) => {
-  const id = params.params.id;
+const page = async ({ params }: { params: { id: string } }) => {
+  const id = params.id;
 
   console.log(id)
 

@@ -9,6 +9,8 @@ import { SiReactquery } from "react-icons/si";
 import { SiTypescript } from "react-icons/si";
 import { RiFirebaseFill } from "react-icons/ri";
 import { IoMdCloudUpload } from "react-icons/io";
+import { SiShadcnui } from "react-icons/si";
+
 
 
 
@@ -382,6 +384,11 @@ export const about = {
         icon: <SiNextdotjs />,
         name: "NextJs"
       },
+      {
+        icon: <SiShadcnui />,
+        name: "Shadcn"
+      },
+      
       {
         icon: <SiJquery />,
         name: "Jquery"

@@ -5,14 +5,17 @@ import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { getSession } from "@/actions/getUser";
-type PageProps = {
+
+type Params = {
   params: {
     id: string;
   };
 };
 
-const page = async (pageProps: PageProps) => {
-  const id = pageProps.params.id;
+const page = async (params: Params) => {
+  const id = params.params.id;
+
+  console.log(id)
 
   mongoose.connect(process.env.MONGO_URL as string);
 
@@ -170,6 +173,7 @@ const page = async (pageProps: PageProps) => {
   ) {
     return (
       <div className="text-center text-2xl font-bold">
+        <pre>{id}</pre>
         Only admin can access this page...
       </div>
     );
@@ -177,6 +181,8 @@ const page = async (pageProps: PageProps) => {
 
   return (
     <div className="flex flex-col items-center w-full">
+
+      <pre>{id}</pre>
       
       <Link
         href="/projects"

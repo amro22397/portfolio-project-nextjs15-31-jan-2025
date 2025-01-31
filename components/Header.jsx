@@ -55,7 +55,7 @@ const Header = ({email}) => {
         xl:mb-0 mt-1 mb-8'>
                 <Social
                 containerStyles="flex gap-4 mx-[5px]"
-                iconStyles='text-4xl flex
+                iconStyles='text-[33.35px] flex
                 justify-center items-center hover:transform hover:scale-110
                 hover:transition-all duration-500'
                 />

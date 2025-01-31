@@ -26,12 +26,27 @@ import axios from "axios";
 import useSWR from "swr";
 
 
-const ProjectById = ({ id, email, jProject }: { 
-    id: string | undefined,
-    email: string | null | undefined,
-    jProject: any,
+
+
+const ProjectById = ({ /*id*/ email, projects }: { 
+    // id?: string | undefined,
+    email?: string | null | undefined,
+    jProject?: any,
+    projects?: any,
  }) => {
 
+    const params = useParams<any>();
+
+    const id = params.id;
+
+    console.log(id);
+
+    const project = projects.find((project: any) => project._id === id);
+    const jProject = JSON.parse(JSON.stringify(project));
+
+    console.log(jProject)
+
+    
     // const [jProject, setJProject] = useState(null);
 
     // const fetchProjectById = async() => {
@@ -63,7 +78,7 @@ const ProjectById = ({ id, email, jProject }: {
                 <pre className='hidden'>{id}</pre>
 
                 <div className=" xl:h-[460px] flex flex-col
-                mx-0 max-xl:mx-4 max-w-full ">
+                mx-0 max-xl:mx-4 xl:w-full max-w-full ">
                     
 
                     <div className=" flex flex-row items-center justify-between
@@ -119,7 +134,7 @@ const ProjectById = ({ id, email, jProject }: {
                         </div>
 
                         
-                        {/* <div className="w-[95%] text-lg
+                         {/* <div className="w-[95%] text-lg
                          px-3 py-2 rounded-md">
                             <span className='font-bold
                             text-green-600 hidden'>{project.technologies}</span>

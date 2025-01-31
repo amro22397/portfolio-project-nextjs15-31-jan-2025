@@ -3,10 +3,8 @@ import ProjectForm from "../../../components/ProjectForm";
 import { Project } from "../../../models/project";
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
-import { getSession, useSession } from "next-auth/react";
-import { getServerSession } from "next-auth";
-import { authOptions } from "../../api/auth/[...nextauth]/route";
-
+import { useSession } from "next-auth/react";
+import { getSession } from "@/actions/getUser";
 type PageProps = {
   params: {
     id: string;
@@ -163,11 +161,11 @@ const page = async (pageProps: PageProps) => {
       console.log(images) 
     } */
 
-  const session = (await getServerSession(authOptions)) as any;
-  console.log(session?.user?.email);
+  const session = await getSession();
+          console.log(session?.user?.email)
 
   if (
-    session.status === "unauthenticated" ||
+    !session?.user?.email ||
     session?.user?.email !== "amroalmutasim22@gmail.com"
   ) {
     return (

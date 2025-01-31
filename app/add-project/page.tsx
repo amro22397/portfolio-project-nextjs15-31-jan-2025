@@ -1,14 +1,10 @@
-'use client'
 
 import { useSession } from 'next-auth/react'
 import ProjectForm from '@/components/ProjectForm'
 import Link from 'next/link';
+import { getSession } from '@/actions/getUser';
 
-
-
-
-
-const page = () => {
+const page = async () => {
 
   
   
@@ -165,10 +161,10 @@ const page = () => {
 
 
 
-      const session = useSession();
-      console.log(session)
+      const session = await getSession();
+        console.log(session?.user?.email)
     
-      if (session.status === 'unauthenticated' || session.data?.user?.email !== "amroalmutasim22@gmail.com") {
+      if (!session?.user?.email || session?.user?.email !== "amroalmutasim22@gmail.com") {
         return (
           <div className="text-center text-2xl font-bold">
             Only admin can access this page...

@@ -51,8 +51,7 @@ const SwiperImage = ({project}) => {
                         <Image 
                         src={image}
                         fill
-                        className='object-fill mx-auto
-                        '
+                        className='object-fill mx-auto'
                         alt={image.alt}
                         />
                     </div>

@@ -1,23 +1,33 @@
-import mongoose from "mongoose";
 import ProjectForm from "../../../components/ProjectForm";
 import { Project } from "../../../models/project";
 import { revalidatePath } from "next/cache";
 import Link from "next/link";
 import { useSession } from "next-auth/react";
 import { getSession } from "@/actions/getUser";
-
-type PageProps = {
-  params: { id: string };
-};
+import { headers } from "next/headers";
+import mongoose from "mongoose";
 
 
-const page = async ({ params }: PageProps) => {
-  const id = params.id;
 
-  console.log(id)
+// type PageProps = {
+//   params: { id: string };
+// };
 
-  mongoose.connect(process.env.MONGO_URL as string);
 
+const page = async (/* { params }: PageProps */) => {
+  
+
+  // const id = params.id;
+
+  // console.log(id)
+
+  const header = await headers();
+const pathname = header.get('referer')
+console.log('pathName:', pathname);
+
+const id = pathname?.split('/')[4]
+
+mongoose.connect(process.env.MONGO_URL as string);
   const project = await Project.findById({ _id: id });
   const jProject = JSON.parse(JSON.stringify(project))
 
@@ -173,6 +183,7 @@ const page = async ({ params }: PageProps) => {
     return (
       <div className="text-center text-2xl font-bold">
         <pre className="hidden">{id}</pre>
+        <pre className="hidden">{pathname}</pre>
         Only admin can access this page...
       </div>
     );

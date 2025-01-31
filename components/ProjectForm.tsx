@@ -102,7 +102,9 @@ const ProjectForm = ({project, id}: {
         setLoading(true);
 
         if (formData.imageUrls.length < 1) {
+          setLoading(false);
             return setErrorMessage('You must enter at least one image!!');
+            
           }
 
           // Edit project function
@@ -122,8 +124,10 @@ const ProjectForm = ({project, id}: {
 
             if (res.ok) {
                 route.push('/projects/' + project._id)
+                setLoading(false);
             } else {
                 console.log(res)
+                setLoading(false);
                 setErrorMessage('Error adding project')
             }
             
@@ -142,9 +146,11 @@ const ProjectForm = ({project, id}: {
 
               if (res.ok) {
                 route.push('/projects/')
+                setLoading(false);
               } else {
                 console.log(res)
                 setErrorMessage('Error adding project')
+                setLoading(false);
               }
 
           }

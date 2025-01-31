@@ -186,7 +186,7 @@ className='mb-5 flex flex-row justify-start items-start content-start'>
 
       <h1 className='mb-4 text-2xl font-bold'>Add project</h1>
 
-      <ProjectForm />
+      <ProjectForm email={session?.user?.email} />
      
       
     </div>

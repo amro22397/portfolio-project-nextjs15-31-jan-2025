@@ -1,10 +1,7 @@
 import ProjectForm from "../../../components/ProjectForm";
 import { Project } from "../../../models/project";
-import { revalidatePath } from "next/cache";
 import Link from "next/link";
-import { useSession } from "next-auth/react";
 import { getSession } from "@/actions/getUser";
-import { headers } from "next/headers";
 import mongoose from "mongoose";
 
 
@@ -21,15 +18,29 @@ const page = async (/* { params }: PageProps */) => {
 
   // console.log(id)
 
-  const header = await headers();
-const pathname = header.get('referer')
-console.log('pathName:', pathname);
+//   const header = await headers();
+// const pathname = header.get('referer')
+// console.log('pathName:', pathname);
 
-const id = pathname?.split('/')[4]
+// const id = pathname?.split('/')[4]
+          
+          mongoose.connect(process.env.MONGO_URL as string)
 
-mongoose.connect(process.env.MONGO_URL as string);
-  const project = await Project.findById({ _id: id });
-  const jProject = JSON.parse(JSON.stringify(project))
+    const allProjects = await Project.find({}, {}, {sort: {createdAt: -1}})
+
+    const jAllProjects = JSON.parse(JSON.stringify(allProjects));
+
+    const session = await getSession();
+          console.log(session?.user?.email)
+
+
+
+// mongoose.connect(process.env.MONGO_URL as string);
+
+
+
+//   const project = await Project.findById({ _id: id });
+//   const jProject = JSON.parse(JSON.stringify(project))
 
   // revalidatePath("/");
 
@@ -173,17 +184,14 @@ mongoose.connect(process.env.MONGO_URL as string);
       console.log(images) 
     } */
 
-  const session = await getSession();
-          console.log(session?.user?.email)
-
   if (
     !session?.user?.email ||
     session?.user?.email !== "amroalmutasim22@gmail.com"
   ) {
     return (
       <div className="text-center text-2xl font-bold">
-        <pre className="hidden">{id}</pre>
-        <pre className="hidden">{pathname}</pre>
+        {/* <pre className="hidden">{id}</pre>
+        <pre className="hidden">{pathname}</pre> */}
         Only admin can access this page...
       </div>
     );
@@ -192,7 +200,7 @@ mongoose.connect(process.env.MONGO_URL as string);
   return (
     <div className="flex flex-col items-center w-full">
 
-      <pre className="hidden">{id}</pre>
+      {/* <pre className="hidden">{id}</pre> */}
       
       <Link
         href="/projects"
@@ -209,7 +217,7 @@ mongoose.connect(process.env.MONGO_URL as string);
 
       <h1 className="mb-4 text-2xl font-bold">Edit project</h1>
 
-      <ProjectForm project={jProject} id={id} />
+      <ProjectForm /* project={jProject} id={id} */ projects={jAllProjects} email={session?.user?.email} />
     </div>
   );
 };

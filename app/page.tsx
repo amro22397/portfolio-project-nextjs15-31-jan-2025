@@ -42,17 +42,17 @@ const page = async () => {
       <div className="mx-auto h-full flex justify-center flex-col
       ">
         <div className="flex flex-col xl:flex-row items-center justify-between
-         xl:pt-8 xl:pb-24">
+         xl:pt-8 xl:pb-24 xl:mx-14">
           <div className="flex flex-col gap-7 text-center xl:text-left order-2 xl:order-none
-          ml-20 max-xl:ml-0">
+           max-xl:ml-0">
             <h1 className="text-6xl font-semibold flex flex-col max-xl:hidden">
               Hello I am ...
             </h1>
-            <span className='text-red-700 dark:text-red-300  text-5xl'>
+            <span className='text-red-700 dark:text-red-400  text-5xl'>
                 
                 Amro El-Mutasim</span>
 
-            <span className='text-gray-600 dark:text-slate-200 text-3xl'>Full Stack Web Developer</span>
+            <span className='text-gray-600 dark:text-zinc-100 text-3xl'>Full Stack Web Developer</span>
 
             <div className="mt-2 max-sm:mt-4">
               <div className="grid md:grid-cols-8 lg:grid-cols-11 lg:gap-y-8 xl:grid-cols-7
@@ -62,7 +62,7 @@ const page = async () => {
                 <div key={index}
                 className='flex flex-col items-center
                 hover:transform hover:scale-105 hover:text-gray-900
-                dark:text-slate-200 dark:hover:text-slate-300'>
+                dark:text-slate-100 dark:hover:text-slate-200'>
 
                 <span className="">{skill.icon}</span>
                 <span className='text-sm font-semibold
@@ -81,7 +81,9 @@ const page = async () => {
               variant='outline'
               size='lg'
               className="uppercase flex items-center gap-2
-              bg-green-400 border-none hover:bg-green-500 active:scale-95 py-6 rounded-full
+              dark:bg-green-600 border-none dark:hover:bg-green-700
+              bg-green-500 hover:bg-green-600
+               active:scale-95 py-6 rounded-full
               text-white"
               >
                 <Link href="/resume-22-oct.pdf" target='_blank'>Download CV</Link>

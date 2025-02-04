@@ -40,7 +40,7 @@ const page = () => {
       <div className="container mx-auto"> 
         <Tabs 
         defaultValue='education'
-        className='flex flex-col xl:flex-row xl:gap-[60px] gap-[90px]'
+        className='flex flex-col xl:flex-row xl:gap-[60px] gap-[90px] mt-3'
         >
           <TabsList className="flex flex-col w-full max-w-[380px] mx-auto xl:mx-0
           gap-6 text-3xl text-white">
@@ -50,7 +50,7 @@ const page = () => {
           <TabsTrigger value="about" className="tabs-trigger">About Me</TabsTrigger>
         </TabsList>
 
-        <div className="min-h-[70vh] w-full">
+        <div className="min-h-[70vh] w-full mt-6 xl:mt-0">
 
           <TabsContent value="experience" className="w-full hidden">
           {!experience.items && (
@@ -112,8 +112,9 @@ const page = () => {
                   {education.items.map((item, index) => {
                     return (
                       <li key={index}
-                      className='bg-[#232329] py-6 px-10 rounded-xl
-                      flex flex-col justify-start items-center lg:items-start gap-1'
+                      className='bg-[#232329]
+                      dark:bg-neutral-700
+                      py-6 px-10 rounded-xl flex flex-col justify-start items-center lg:items-start gap-1'
                       >
                         <span id='item-duration'
                         >{item.duration}</span>
@@ -167,7 +168,7 @@ const page = () => {
                       <TooltipProvider delayDuration={100}>
                         <Tooltip>
                           <TooltipTrigger id="skill-div"
-                          className='w-full h-[150px] bg-[#232329]
+                          className='w-full h-[150px] bg-[#232329] dark:bg-neutral-700
                           rounded-xl flex flex-col justify-center items-center group
                           cursor-auto'>
                             <div id="skill-icon"

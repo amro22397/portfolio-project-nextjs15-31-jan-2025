@@ -7,7 +7,7 @@ import AddProject from './AddProject';
 
 const ProjectsFilter = ({allProjects, frontEndProjects, fullStackProjects, email}) => {
 
-const [projects, setProjects] = useState(allProjects);
+const [projects, setProjects] = useState(fullStackProjects);
 
   return (
 
@@ -48,7 +48,7 @@ max-sm:grid-cols-1 max-md:grid-cols-1 max-lg:grid-cols-2 max-xl:grid-cols-2">
     {projects.length > 0 && projects.map((project, index) => (
         <Link key={index} href={`/projects/${project._id}`}>
          <div key={index} className="flex flex-col justify-start items-center
-        bg-[#232329]/80 dark:bg-[#232329] gap-3 shadow-lg mb-3 transform hover:scale-[1.01] transition-all duration-300 ease-in-out
+        bg-[#232329]/90 dark:bg-stone-700 gap-3 shadow-lg mb-3 transform hover:scale-[1.01] transition-all duration-300 ease-in-out
         cursor-pointer h-[460px] max-w-[370px] mx-auto
         max-sm:max-w-full" id="project-card">
             

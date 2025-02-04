@@ -4,10 +4,39 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React, { useState } from 'react'
 import AddProject from './AddProject';
+import { FaArrowLeft } from "react-icons/fa6";
+import { FaArrowRight } from "react-icons/fa6";
+import axios from 'axios'
+
+
 
 const ProjectsFilter = ({allProjects, frontEndProjects, fullStackProjects, email}) => {
 
 const [projects, setProjects] = useState(fullStackProjects);
+
+
+// const handleRight = (id) => {
+//         try {
+//             axios.put(`/api/projects/move-right?=id=${id}`)
+
+//             alert("Project moved right");
+
+//             window.location.reload();
+//         } catch (error) {
+//             alert(`Error: ${error}`)
+//         }
+//       }
+    
+//       const handleLeft = (index) => {
+//         if (index > 0) {
+//           const updatedTaskList = [...taskList];
+//           [updatedTaskList[index], updatedTaskList[index - 1]] =
+//           [updatedTaskList[index - 1], updatedTaskList[index]];
+//           setTaskList(updatedTaskList); 
+//         } else {
+//           alert("You can't move left");
+//         }
+//       }
 
   return (
 
@@ -46,14 +75,24 @@ onClick={() => setProjects(fullStackProjects)}>
 max-sm:grid-cols-1 max-md:grid-cols-1 max-lg:grid-cols-2 max-xl:grid-cols-2">
 
     {projects.length > 0 && projects.map((project, index) => (
-        <Link key={index} href={`/projects/${project._id}`}>
+        <Link key={index} href={`/projects/${project._id}`}
+        className=''>
          <div key={index} className="flex flex-col justify-start items-center
         bg-[#232329]/90 dark:bg-stone-700 gap-3 shadow-lg mb-3 transform hover:scale-[1.01] transition-all duration-300 ease-in-out
         cursor-pointer h-[460px] max-w-[370px] mx-auto
-        max-sm:max-w-full" id="project-card">
+        max-sm:max-w-full relative" id="project-card">
             
             <Image src={project.imageUrls[0]} alt={project.title}
             className='object-fill w-full max-sm:w-full max-sm:h-[50%]' width={420} height={200} />
+
+            {/* {email && email === "amroalmutasim22@gmail.com" && (
+                <div className="absolute top-2 right-[10px]
+                flex flex-row gap-3 items-center text-xl bg-green-600/95 rounded-full px-2 py-1">
+                    <FaArrowLeft onClick={() => handleLeft(project._id)} />
+                    <FaArrowRight onClick={() => handleRight(project._id)} />
+                </div>
+            )} */}
+            
 
             <h2 className="text-2xl font-semibold text-orange-400">{project.title}</h2>
 

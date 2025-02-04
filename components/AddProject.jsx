@@ -17,8 +17,8 @@ const AddProject = ({email}) => {
 
         <Link href="/add-project"
         className='bg-yellow-600 px-4 py-[6px] text-white dark:text-white rounded-sm
-        max-sm:mx-2 hover:bg-yellow-700 active:bg-yellow-800 transition-all duration-500
-        text-lg'
+        max-sm:mx-2 hover:bg-yellow-500 active:scale-95
+        '
         >
         Add Project
         </Link>

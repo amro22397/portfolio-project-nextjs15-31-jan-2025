@@ -27,6 +27,8 @@ const page = async () => {
 
     const session = await getSession();
       console.log(session?.user?.email)
+  
+      
 
   return (
      
@@ -37,7 +39,8 @@ const page = async () => {
                 
     
     <ProjectFilter allProjects={jAllProjects} frontEndProjects={jfrontEndProjects}
-                fullStackProjects={jfullStackProjects} email={session?.user?.email} />
+                fullStackProjects={jfullStackProjects} email={session?.user?.email}
+                 />
         
        
 

@@ -23,6 +23,7 @@ import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa'
 
 import { Edit, User } from 'lucide-react'
 import Link from 'next/link'
+import { useTranslations } from 'next-intl';
 
 
 

@@ -1,42 +1,43 @@
 import { model, models, Schema } from "mongoose";
 
-const ProjectSchema = new Schema({
+const ProjectSchema = new Schema(
+  {
     title: {
-        type: String,
+      type: String,
     },
 
     description: {
-        type: String,
+      type: String,
     },
 
     technologies: {
-        type: String,
+      type: String,
     },
 
     technologiesArray: {
-        type: Array,
+      type: Array,
     },
 
     link: {
-        type: String,
+      type: String,
     },
 
     date: {
-        type: String,
+      type: String,
     },
-  
+
     category: {
-        type: String,
+      type: String,
     },
 
     imageUrls: {
-        type: Array,
+      type: Array,
     },
     youtubeLink: {
-        type: String,
+      type: String,
     },
-    
-    
-}, { timestamps: true });
+  },
+  { timestamps: true }
+);
 
-export const Project = models?.Project || model('Project', ProjectSchema);
+export const Project = models?.Project || model("Project", ProjectSchema);

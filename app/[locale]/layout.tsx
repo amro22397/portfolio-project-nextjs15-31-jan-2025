@@ -50,6 +50,10 @@ export default async function RootLayout({ children, params: { locale } }: {
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"></link>
       {/* <script src="https://unpkg.com/@tailwindcss/browser@4"></script> */}
 
+      <style>
+        @import
+        url('https://fonts.googleapis.com/css2?family=Alexandria:wght@100..900&family=Cairo:wght@200..1000&family=Readex+Pro:wght@160..700&family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+      </style>
       
       </head>
 

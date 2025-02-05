@@ -69,9 +69,9 @@ const Header = ({ email, locale }) => {
           />
 
           <div className="flex-row justify-center items-center gap-[8.5px] hidden">
-            <Link href="/contact" className="text-white hidden">
+            
               <HireMe />
-            </Link>
+            
           </div>
 
           <div className="flex flex-row gap-4">

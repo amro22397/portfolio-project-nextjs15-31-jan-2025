@@ -38,9 +38,7 @@ const Footer = ({ email }) => {
         )}
       </div>
 
-        <Link href="/contact" className="text-white">
-          <HireMe />
-        </Link>
+        <HireMe />
 
       </div>
 

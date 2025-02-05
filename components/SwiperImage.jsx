@@ -11,10 +11,14 @@ import "swiper/css";
 import Image from 'next/image';
   import WorkSliderBtns from '../components/WorkSliderBtns';
   import exp from 'constants';
+import { useLocale } from 'next-intl';
   
 
 
 const SwiperImage = ({project}) => {
+
+  const locale = useLocale();
+  
   return (
     <div className="w-[98vw] xl:w-[50%] justify-center items-center">
     <Swiper

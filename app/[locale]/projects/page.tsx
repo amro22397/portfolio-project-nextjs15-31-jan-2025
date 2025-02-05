@@ -2,16 +2,18 @@ import React from 'react'
 import './page.css'
 
 import mongoose from 'mongoose';
-import { Project } from '../../models/project';
-import AddProject from '../../components/AddProject'
-import ProjectFilter from '../../components/ProjectsFilter'
+import { Project } from '../../../models/project';
+import AddProject from '../../../components/AddProject'
+import ProjectFilter from '../../../components/ProjectsFilter'
 import { revalidatePath } from 'next/cache';
 import { getSession } from '@/actions/getUser';
+import { getLocale } from 'next-intl/server';
+
 
 
 const page = async () => {
 
-    mongoose.connect(process.env.MONGO_URL)
+    mongoose.connect(process.env.MONGO_URL as string)
 
     const frontEndProjects = await Project.find({category: {$in: ["Frontend"]}}, {}, {sort: {createdAt: -1}})
     const jfrontEndProjects = JSON.parse(JSON.stringify(frontEndProjects));
@@ -27,6 +29,8 @@ const page = async () => {
 
     const session = await getSession();
       console.log(session?.user?.email)
+
+      const locale = await getLocale();
   
       
 
@@ -40,6 +44,7 @@ const page = async () => {
     
     <ProjectFilter allProjects={jAllProjects} frontEndProjects={jfrontEndProjects}
                 fullStackProjects={jfullStackProjects} email={session?.user?.email}
+                locale={locale}
                  />
         
        

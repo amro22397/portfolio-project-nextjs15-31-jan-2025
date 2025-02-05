@@ -1,11 +1,12 @@
 'use client'
 
 import { useSession } from 'next-auth/react'
+import { useTranslations } from 'next-intl'
 import Link from 'next/link'
 import { useRouter } from 'next/navigation'
 import React from 'react'
 
-const EditDeleteButtons = ({id, email}) => {
+const EditDeleteButtons = ({id, email, locale}) => {
 
     const route = useRouter();
 
@@ -20,7 +21,7 @@ const EditDeleteButtons = ({id, email}) => {
             });
 
             if (res.ok) {
-                route.push('/projects');
+                route.push(`/${locale}/projects`);
             } else {
                 alert('Error deleting')
                 console.log(res)
@@ -29,7 +30,7 @@ const EditDeleteButtons = ({id, email}) => {
             const path = window.location.pathname;
         console.log(path)
 
-        if (path !== `/projects/${id}`) {
+        if (path !== `/${locale}/projects/${id}`) {
             window.location.reload();
         }
         }
@@ -38,6 +39,7 @@ const EditDeleteButtons = ({id, email}) => {
         // const session = useSession();
         // console.log(session.data?.user?.email)
         
+        const projectById = useTranslations('ProjectByIdPage')
 
   return (
     <>
@@ -46,13 +48,13 @@ const EditDeleteButtons = ({id, email}) => {
         mr-[6px]">
 
 
-        <Link href={'/edit-project/'+id}
+        <Link href={`/${locale}/edit-project/${id}`}
         className='text-green-600 text-xl font-bold'
-        >Edit</Link>
+        >{projectById('Edit')}</Link>
 
         <button onClick={handleProjectDelete}
         className='text-red-600 text-xl font-bold'>
-            Delete
+            {projectById('Delete')}
         </button>
     </div>
     )}

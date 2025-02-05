@@ -12,6 +12,7 @@ import { headers } from "next/headers";
 import ProjectById from './ProjectById';
 import { Project } from '@/models/project';
 import mongoose from 'mongoose';
+import { getLocale } from 'next-intl/server';
 
 
 
@@ -53,11 +54,14 @@ export default async function page(/*props: PageProps*/) {
      const session = await getSession();
       console.log(session?.user?.email)
 
+      const locale = await getLocale();
+
   return (
     
 
     <>
-    <ProjectById /* id={id} jProject={jProject} */ email={session?.user?.email} projects={jAllProjects}  />
+    <ProjectById /* id={id} jProject={jProject} */ email={session?.user?.email} projects={jAllProjects}
+    locale={locale}  />
 
     {/* <pre className="">{id}</pre> */}
     {/* <pre>{JSON.stringify(jProject, null, 2)}</pre> */}

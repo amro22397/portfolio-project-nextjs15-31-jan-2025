@@ -1,121 +1,104 @@
-"use client"
+"use client";
 
-import React, { useState } from 'react'
-import Nav from './Nav'
-import { Button } from './ui/button'
-import Link from 'next/link'
-import MobileNav from './MobileNav'
-import { links } from '../public/Constants.js';
+import React, { useState } from "react";
+import Nav from "./Nav";
+import { Button } from "./ui/button";
+import Link from "next/link";
+import MobileNav from "./MobileNav";
+import { links } from "../public/Constants.js";
 
-import { usePathname } from 'next/navigation'
-import Social from './Social'
+import { usePathname } from "next/navigation";
+import Social from "./Social";
 
-import { useSession, signOut } from 'next-auth/react' 
-import ThemeSwitch from './ThemeSwitch'
+import { useSession, signOut } from "next-auth/react";
+import ThemeSwitch from "./ThemeSwitch";
+import { useTranslations } from "next-intl";
+import ChangeLanguage from "./ChangeLanguage";
+import HireMe from "./HireMe";
+import LogIn from "./LogIn";
+import LogOut from "./LogOut";
 
-
-const Header = ({email}) => {
-  
+const Header = ({ email, locale }) => {
   // const session = useSession();
   // console.log(session)
 
   const [isOpen, setIsOpen] = useState(false);
   const pathname = usePathname();
 
-   return (
+  const header = useTranslations("Header");
+
+  return (
     <>
-
-    <header className='py-8 xl:py-12 text-white hidden xl:flex flex-row items-center justify-between'>
-
+      <header className="py-8 xl:py-12 text-white hidden xl:flex flex-row items-center justify-between">
         <div className="container mx-auto flex flex-row items-center justify-between">
+          <div
+            className="flex flex-row items-center gap-8 text-gray-700 dark:text-white
+            font-sans font-semibold w-full"
+          >
+            <Nav locale={locale} />
+          </div>
+        </div>
 
-            <div className="flex flex-row items-center gap-8 text-gray-700 dark:text-white
-            font-sans font-semibold text-md">
-            
-            <Nav />
+        <div className="w-full">
+          {email && (
+            <div
+              className="flex flex-row text-black dark:text-white mx-10 font-semibold
+            gap-4"
+            >
+              <p>{email}</p>
 
+              <LogOut />
             </div>
+          )}
+        </div>
+
+        <div
+          className=" flex flex-row gap-[17.75px] items-center
+        xl:mb-0 mt-1 mb-8"
+        >
+          {!email && (
+            <LogIn />
+          )}
+
+
+          <Social
+            containerStyles="flex gap-4 mx-[5px] hidden"
+            iconStyles="text-[33.35px] flex
+                justify-center items-center hover:transform hover:scale-110
+                hover:transition-all duration-500"
+          />
+
+          <div className="flex-row justify-center items-center gap-[8.5px] hidden">
+            <Link href="/contact" className="text-white hidden">
+              <HireMe />
+            </Link>
+          </div>
+
+          <div className="flex flex-row gap-4">
+            <ChangeLanguage />
+            <ThemeSwitch />
+          </div>
+        </div>
+      </header>
+
+      <div className="block xl:hidden mx-5 mt-6 mb-2">
+        <div className="mb-7">
+          <Nav locale={locale} />
         </div>
 
         {email && (
-            <div className='flex flex-row text-black dark:text-white mx-10 font-semibold
-            gap-4'>
-              <p>{email}</p>
+          <div
+            className="flex flex-row text-black dark:text-white justify-center mb-4 font-semibold
+            gap-4 mx-auto"
+          >
+            <p>{email}</p>
 
-              <button onClick={() => {
-         signOut({callbackUrl: '/'}) }}
-              className='text-red-600 dark:text-red-200'>Logout</button>
-            </div>
-          )}
-
-          
-
-
-        <div className=' flex flex-row gap-6 items-center
-        xl:mb-0 mt-1 mb-8'>
-                <Social
-                containerStyles="flex gap-4 mx-[5px]"
-                iconStyles='text-[33.35px] flex
-                justify-center items-center hover:transform hover:scale-110
-                hover:transition-all duration-500'
-                />
-
-                <div className="flex flex-row justify-center items-center gap-[8.5px]">
-
-                  
-                <Link href="/contact" className='text-white'>
-            <Button className="bg-green-600 hover:bg-green-700 active:scale-95
-            px-7 py-[22px]
-            rounded-full text-sm">Hire Me</Button>
-            </Link>
-
-            {!email && (
-            <Link href="/login" className='text-white'>
-            <Button className="bg-orange-700 hover:bg-orange-800 active:scale-95
-            px-7 py-[22px]
-            rounded-full text-md">Log In</Button>
-            </Link>
-          )}
-          
-          <ThemeSwitch />
-
-                </div>
-                
-              </div>
-    </header>
-
-    <div className="block xl:hidden mx-5 mt-6 mb-2">
-    <nav className='flex flex-row justify-center items-center gap-8 mb-7'>
-                {links.map((link, index) => {
-                    return (
-                    <Link href={link.path} key={index} 
-                    className={`${
-                        link.path === pathname && "border-b-2 text-gray-950 border-gray-950 dark:text-white dark:border-slate-200"
-                    } text-xl text-gray-800 hover:text-gray-900 dark:text-slate-100 dark:hover:text-slate-200
-                    transition-all duration-500
-                    `}
-                    style={{fontFamily: "sans-serif"}}
-                     >
-                        {link.name}
-                    </Link>
-                    )
-                })}
-            </nav>
-
-            {email && (
-            <div className='flex flex-row text-black dark:text-white justify-center mb-4 font-semibold
-            gap-4 mx-auto'>
-              <p>{email}</p>
-
-              <button onClick={() => {
-         signOut({callbackUrl: '/'}) }}
-              className='text-red-600 dark:text-red-200'>Logout</button>
-            </div>
-          )}
-
-    </div>
+            <LogOut />
+          </div>
+        )}
+      </div>
     </>
-  )
-}
+  );
+};
 
-export default Header
+export default Header;

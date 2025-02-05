@@ -15,7 +15,7 @@ import './ProjectForm.css'
 import Image from 'next/image';
 import { set } from 'mongoose';
 
-import ProjectFormForId from '@/app/add-project/ProjectFormForId';
+import ProjectFormForId from '@/app/[locale]/add-project/ProjectFormForId';
 
 // import ReactPlayer from 'react-player'
 

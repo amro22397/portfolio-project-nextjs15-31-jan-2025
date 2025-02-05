@@ -6,25 +6,28 @@ import CountUp from 'react-countup'
 import { projects } from '../public/Constants'
 import { about, experience, education, skills } from '../public/Constants'
 import { diff } from '../public/Constants'
+import { useTranslations } from 'next-intl'
 
 
 
 
 const Stats = ({allProjects}) => {
+
+    const statsPage = useTranslations('StatsPage')
     const stats = [
         {
             num: diff,
-            text: "Years Of Experience",
+            text: statsPage('Years Of Experience'),
         },
         
         {
             num: allProjects.length,
-            text: "Projects completed",
+            text: statsPage('Projects completed'),
         },
     
         {
             num: skills.skillList.length,
-            text: "Technologies mastered",
+            text: statsPage('Technologies mastered'),
         },
     
     ];

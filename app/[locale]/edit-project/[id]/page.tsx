@@ -1,8 +1,9 @@
-import ProjectForm from "../../../components/ProjectForm";
-import { Project } from "../../../models/project";
+import ProjectForm from "../../../../components/ProjectForm";
+import { Project } from "../../../../models/project";
 import Link from "next/link";
 import { getSession } from "@/actions/getUser";
 import mongoose from "mongoose";
+import BackToProjects from "@/components/BackToProjects";
 
 
 
@@ -202,18 +203,7 @@ const page = async (/* { params }: PageProps */) => {
 
       {/* <pre className="hidden">{id}</pre> */}
       
-      <Link
-        href="/projects"
-        className="mb-5 flex flex-row justify-start items-start content-start"
-      >
-        <button
-          className="bg-yellow-500 px-4 py-[6px] text-whites rounded-sm
-                border-2 border-black
-                font-semibold hover:bg-yellow-400 active:bg-yellow-700 transition-all duration-500"
-        >
-          Back to projects
-        </button>
-      </Link>
+      <BackToProjects />
 
       <h1 className="mb-4 text-2xl font-bold">Edit project</h1>
 

@@ -1,11 +1,16 @@
-"use client"
 
-import React, { useState } from 'react'
+import React from 'react'
 import { signIn } from "next-auth/react";
 import LoginForm from './login-form';
+import { getSession } from '@/actions/getUser';
+import { redirect } from 'next/navigation';
 
 
-const page = () => {
+const page = async () => {
+
+  const session = await getSession();
+  console.log(session?.user?.email)
+
     // const [loading, setLoading] = useState(false);
     // const [error, setError] = useState(false);
     // const [userCreated, setUserCreated] = useState(false);
@@ -28,6 +33,11 @@ const page = () => {
     //         [e.target.id] : e.target.value,
     //     })
     // }
+
+    if (session?.user?.email) {
+      redirect('/');
+    }
+    
   return (
     <div className="dark:border-none flex h-[68.5vh] w-full items-center justify-center p-6 md:p-10">
       <div className="w-full max-w-sm dark:border-none">

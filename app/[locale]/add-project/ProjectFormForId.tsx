@@ -4,7 +4,7 @@
 
 import React, { useState, useEffect } from 'react'
 
-import { useRouter } from 'next/navigation';
+import { useParams, useRouter } from 'next/navigation';
 import { UploadButton } from "@/utils/uploadthing";
 
 import { useSession } from 'next-auth/react'
@@ -20,11 +20,15 @@ import { set } from 'mongoose';
 import { Project } from '@/components/ProjectForm';
 
 
+
 const ProjectFormForId = ({ projects, id, email}: {
     projects?: Project[] | undefined | any,
     id?: string,
     email?: string | null | undefined,
 }) => {
+
+  const { locale } = useParams<any>();
+  console.log(locale)
 
     const route = useRouter();
 
@@ -143,7 +147,7 @@ const ProjectFormForId = ({ projects, id, email}: {
             setLoading(false)
 
             if (res.ok) {
-                route.push(`/projects/${jProject._id}`)
+                route.push(`/${locale}/projects/${jProject._id}`)
             } else {
                 console.log(res)
                 setErrorMessage('Error adding project')
@@ -163,7 +167,7 @@ const ProjectFormForId = ({ projects, id, email}: {
               setLoading(false)
 
               if (res.ok) {
-                route.push('/projects/')
+                route.push(`/${locale}/projects/`)
                 setLoading(false);
               } else {
                 console.log(res)

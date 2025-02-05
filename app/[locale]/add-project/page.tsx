@@ -3,6 +3,7 @@ import { useSession } from 'next-auth/react'
 import ProjectForm from '@/components/ProjectForm'
 import Link from 'next/link';
 import { getSession } from '@/actions/getUser';
+import BackToProjects from '@/components/BackToProjects';
 
 const page = async () => {
 
@@ -176,13 +177,7 @@ const page = async () => {
   return (
     <div className='flex flex-col items-center w-full'>
 
-<Link href="/projects"
-className='mb-5 flex flex-row justify-start items-start content-start'>
-                <button className='bg-yellow-500 px-4 py-[6px] text-whites rounded-sm
-                border-2 border-black
-                font-semibold hover:bg-yellow-400 active:bg-yellow-700 transition-all duration-500'
-            >Back to projects</button>
-                </Link>
+      <BackToProjects />
 
       <h1 className='mb-4 text-2xl font-bold'>Add project</h1>
 

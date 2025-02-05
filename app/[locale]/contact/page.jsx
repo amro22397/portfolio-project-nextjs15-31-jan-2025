@@ -2,20 +2,22 @@
 
 import React, { useState } from 'react'
 
-import { Button } from '../../components/ui/button'
-import { Input } from '../../components/ui/input'
-import { Textarea } from '../../components/ui/textarea'
+import { Button } from '../../../components/ui/button'
+import { Input } from '../../../components/ui/input'
+import { Textarea } from '../../../components/ui/textarea'
 
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel,
-  SelectTrigger } from '../../components/ui/select'
+  SelectTrigger } from '../../../components/ui/select'
 
   import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa'
 
-  import { info } from '../../public/Constants'
+  import { info } from '../../../public/Constants'
 
   import { motion } from 'framer-motion';
 import { SelectValue } from '@radix-ui/react-select'
-import { useRouter } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
+import { useTranslations } from 'next-intl'
+import Link from 'next/link'
 
 const page = () => {
 
@@ -24,6 +26,8 @@ const page = () => {
   const [email, setEmail] = useState('');
   const [phoneNumber, setPhoneNumber] = useState('');
   const [message, setMessage] = useState('');
+
+  const pathName = usePathname();
 
 
 
@@ -86,7 +90,7 @@ const handleChange = () => {
 
     }
 
-    
+    const contactPage = useTranslations('ContactPage')
     
   return (
     <motion.section 
@@ -98,38 +102,40 @@ const handleChange = () => {
       <div className="containter mx-auto">
         <div className="flex flex-col xl:flex-row gap-[30px]">
 
-          <div className="xl:h-[54%] order-2 xl:order-none">
+          <div className={`xl:h-[54%] order-2 xl:order-none
+            ${pathName.includes('ar') ? 'xl:max-w-[675px]' : ''}`}>
 
             <form onSubmit={handleSubmit}
             className="flex flex-col gap-6 p-10 bg-[#27272c] dark:bg-[#414149] sm:rounded-xl rounded-none">
-              <h3 className="text-4xl text-orange-400">Let's work together</h3>
-              <p className="text-white/60">
-              I'm happy to get request for web designs and I will make it as soon as I can...
+              <h3 className={`text-4xl text-orange-400 
+                ${pathName.includes('ar') ? 'text-2xl' : ''}`}>{contactPage('WorkTogether')}</h3>
+              <p className={`text-white/60 ${pathName.includes('ar') ? 'text-md' : ''}`}>
+              {contactPage('HappyGetRequests')}
               </p>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                <Input type='firstname' placeholder="First Name" 
+                <Input type='firstname' placeholder={contactPage('p-First Name')}
                 onChange={(e) => {
                   handleChange();
                   setFirstName(e.target.value);
                 }} name="firstName" id="firstName"
                 value={firstName} />
 
-                <Input type='lastname' placeholder="Last Name"
+                <Input type='lastname' placeholder={contactPage('p-Last Name')}
                  onChange={(e) => {
                   handleChange();
                   setLastName(e.target.value);
                 }} name="lastName" id="lastName" 
                  value={lastName} />
 
-                <Input type='email' placeholder="Email address"
+                <Input type='email' placeholder={contactPage('p-Email address')}
                 onChange={(e) => {
                   handleChange();
                   setEmail(e.target.value);
                 }} name="email" id="email"
                 value={email} />
 
-                <Input type='phone' placeholder="Phone number"
+                <Input type='phone' placeholder={contactPage('p-Phone number')}
                 onChange={(e) => {
                   handleChange();
                   setPhoneNumber(e.target.value);
@@ -139,18 +145,18 @@ const handleChange = () => {
               </div>
 
               <select onChange={handleChange} id="service"
-              name="service"
+              name="service" defaultValue="Frontend"
               className='bg-gray-700 text-white/80 px-3
               py-3 border border-gray-50/10'>
-                <option value="Frontend">Frontend Development</option>
-                <option value="Backend">Backend Development</option>
-                <option value="Full Stack">Full Stack Development</option>
+                <option value="Frontend">{contactPage('Frontend Development')}</option>
+                <option value="Backend">{contactPage('Backend Development')}</option>
+                <option value="Full Stack">{contactPage('Full Stack Development')}</option>
               </select>
 
               <Textarea 
               name="message"
               className="h-[200px]"
-              placeholder="Type your message here..."
+              placeholder={contactPage('textAreaMessage')}
               onChange={(e) => {
                 handleChange();
                 setMessage(e.target.value);
@@ -167,7 +173,7 @@ const handleChange = () => {
               <Button type='submit'
               size="md" className="max-w-40 py-2 bg-orange-600 hover:bg-orange-700
               active:bg-amber-800 text-white disabled:bg-gray-400" disabled={loading}>
-                {loading ? 'Sending...' : 'Send message'}
+                {loading ? contactPage('Sending...') : contactPage('Send message')}
               </Button>
 
               {messageSuccess && (
@@ -175,7 +181,7 @@ const handleChange = () => {
                 gap-2">
                   <i class="fa-solid fa-circle-check
                   text-green-600 "></i>
-                  <span>Message sent successfully!</span>
+                  <span>{contactPage('Message sent successfully!')}</span>
                 </div>
               )}
             </form>
@@ -185,6 +191,7 @@ const handleChange = () => {
           xl:order-none mb-8 xl:mb-0 mx-auto">
             <ul className=''>
               {info.map((item, index) => {
+
                 return (
                   <li key={index} className='flex flex-row gap-3 my-12'>
 
@@ -195,8 +202,24 @@ const handleChange = () => {
                     </div>
 
                     <div className="flex-1">
-                      <p className="text-black dark:text-white font-semibold">{item.title}</p>
-                      <h3 className="">{item.description}</h3>
+                      <p className="text-black dark:text-white font-semibold">
+                        {pathName.includes("en") ? item.title : item.arTitle}
+                      </p>
+                      <h3 className="">
+                      {pathName.includes("en") && item?.description ? item.description :
+                      item?.arDescription && item.arDescription}
+                      {pathName.includes("en") && item?.link ? (
+                        <Link href={item?.link} target='_blank'
+                        className='text-green-500 hover:underline active:scale-95'>
+                          Click Here
+                        </Link>
+                      ) : item?.arLink && (
+                        <Link href={item?.arLink} target='_blank'
+                        className='text-green-500 hover:underline active:scale-95'>
+                          أضغط هنا
+                        </Link>
+                      )}
+                      </h3>
                     </div>
                   </li>
                 )

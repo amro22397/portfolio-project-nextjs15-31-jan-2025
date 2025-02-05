@@ -1,6 +1,86 @@
 {
-    "HomePage": {
-      "title": "Hello world!",
-      "about": "Go to the about page"
-    }
+  
+  "HomePage": {
+    "Hello": "Hello I am ...",
+    "MyName": "Amro El-Mutasim",
+    "role": "Full Stack Web Developer",
+    "Download CV": "Download CV"
+  },
+
+  "StatsPage": {
+    "Years Of Experience" : "Years Of Experience",
+    "Projects completed": "Projects completed",
+    "Technologies mastered": "Technologies mastered"
+  },
+
+  "ProjectsPage": {
+    "Add Project" : "Add Project",
+    "All": "All",
+    "Fullstack": "Fullstack",
+    "Frontend": "Frontend"
+  },
+
+  "ProjectByIdPage": {
+    "Back to projects" : "Back to projects",
+    "Edit": "Edit",
+    "Delete": "Delete",
+    "Visit the website" : "Visit the website"
+    
+  },
+
+  "ResumePage": {
+    "Experience" : "Experience",
+    "Education": "Education",
+    "Skills": "Skills",
+    "About Me" : "About Me",
+    "No work experience": "There is no work experience yet....",
+    "No Education": "There is no Education yet....",
+    "Download Certificate": "Download Certificate",
+    "Download English Translation": "Download English Translation"
+    
+  },
+
+  "ContactPage": {
+    "WorkTogether" : "Let's work together",
+    "HappyGetRequests": "I'm happy to get request for web designs and I will make it as soon as I can...",
+
+    "p-First Name": "First Name",
+    "p-Last Name": "Last Name",
+    "p-Email address" : "Email address",
+    "p-Phone number": "Phone number",
+
+    "Frontend Development": "Frontend Development",
+    "Backend Development": "Backend Development",
+    "Full Stack Development": "Full Stack Development",
+
+    "textAreaMessage": "Type your message here...",
+    "Sending": "Sending...",
+    "Send message": "Send message",
+    "Message sent successfully": "Message sent successfully!"
+    
+  },
+
+
+
+  "Header": {
+    "Logout" : "Logout",
+    "Hire Me": "Hire Me",
+    "Log In": "Log In",
+    "About Me" : "About Me"
+    
+  },
+
+
+  "LoginPage": {
+    "Login" : "Login",
+    "EnterYourEmailDesc": "Enter your email below to login to your account",
+    "Email": "Email",
+    "Password" : "Password",
+    "Forgot your password?": "Forgot your password?",
+    "LoginButton": "Login",
+    "Continue With Google": "Continue With Google",
+    "Dont have an account?": "Don't have an account?",
+    "Register": "Register"
+    
   }
+}

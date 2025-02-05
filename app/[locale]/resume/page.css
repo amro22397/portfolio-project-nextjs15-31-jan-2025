@@ -17,3 +17,17 @@
 #skill-div:hover #skill-text {
     color: rgb(223, 223, 223);;
 }
+
+.rtl-container * {
+    direction: rtl;
+    @apply text-center xl:text-right;  
+}
+
+.leftToRight * {
+    direction: ltr;
+}
+
+.left-to-right * {
+    direction: ltr;
+    @apply text-center xl:text-left
+}

@@ -1,4 +1,4 @@
-import { FaHtml5, FaCss3, FaJs, FaReact, FaNodeJs } from 'react-icons/fa'
+import { FaHtml5, FaCss3, FaJs, FaReact, FaNodeJs, FaWhatsapp } from 'react-icons/fa'
 import { SiJquery } from "react-icons/si";
 import { SiExpress } from "react-icons/si";
 import { SiMongodb } from "react-icons/si";
@@ -15,29 +15,36 @@ import { SiShadcnui } from "react-icons/si";
 
 
 import { FaPhoneAlt, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa'
+import { useTranslations } from 'next-intl';
 
 
 var dPast = 'March 1, 2024';
 var d1 = new Date();
 var d2 = new Date(dPast);
 var dCalc = Math.abs((d1-d2)/31556952000);   // difference in milliseconds
+
+
 export var diff = Math.ceil(10 * dCalc)/10;
 
 export const links = [
     {
         name: "Home",
-        path: "/",
+        arName: "الصفحة الرئيسية",
+        path: "",
     },
     {
         name: "Projects",
+        arName: "أعمال سابقة",
         path: "/projects",
     },
     {
         name: "Resume",
+        arName: "السيرة الذاتية",
         path: "/resume",
     },
     {
         name: "Contact",
+        arName: "تواصل معي",
         path: "/contact",
     },
 
@@ -241,40 +248,60 @@ export const projects = [
 
 export const about = {
     title: "About me",
+    arTitle: "نبذة عني",
     descripiton: 'I am a Full Stack Web Developer. I can design the frontend and the backend of the website. Also, I can use many tools and libraries to make the page looks good and responsive.',
+    aeDescripiton: "أنا مصمم ومطور مواقع إلكترونية الواجهة الكاملة. أستطيع تصميم الواجهة الأمامية والواجهة الخلفية من الموقع. أيضا أستطيع إستخدام العديد من الأدوات والمكتبات لجعل الصفحات جيدة ومتجاوبة . ",
     info: [
       {
         fieldName: "Name",
-        fieldValue: "Amro El-Mutasim"
+        fieldValue: "Amro El-Mutasim",
+        arFieldName: "الإسم",
+        arFieldValue: "عمرو المعتصم"
       },
       {
         fieldName: "Phone Number",
-        fieldValue: "+96879335801"
+        fieldValue: "+96879335801",
+        arFieldName: "رقم الهاتف",
+        arFieldValue: "+96879335801",
+        // dir: "ltr",
+        // arDir: "ltr",
       },
       {
         fieldName: "Whatsapp Number",
-        fieldValue: "+249995291772"
+        fieldValue: "+249995291772",
+        arFieldName: "رقم الواتساب",
+        arFieldValue: "+249995291772"
       },
       {
         fieldName: "Experience",
-        fieldValue: diff + " Years"
+        fieldValue: diff + " Years",
+        arFieldName: "الخبرة",
+        arFieldValue: diff === 1 ? diff + " سنة" : diff + " سنوات",
       },
       {
         fieldName: "Nationality",
-        fieldValue: "Sudanese"
+        fieldValue: "Sudanese",
+        arFieldName: "الجنسية",
+        arFieldValue: "سوداني"
       },
       {
         fieldName: "Email",
-        fieldValue: "amroalmutasim22@gmail.com"
+        fieldValue: "amroalmutasim22@gmail.com",
+        arFieldName: "البريد الإلكتروني",
+        arFieldValue: "amroalmutasim22@gmail.com"
       },
       {
         fieldName: "Freelance",
-        fieldValue: "Available"
+        fieldValue: "Available",
+        arFieldName: "العمل الحر",
+        arFieldValue: "متوفر"
       },
   
       {
         fieldName: "Languages",
-        fieldValue: "Arabic, English"
+        fieldValue: "Arabic, English",
+        arFieldName: "اللغات",
+        arFieldValue: "العربية , الإنجليزية"
       },
     ] 
   }
@@ -285,7 +312,9 @@ export const about = {
   
     export const education = {
       title: "My Education",
+      arTitle: "التعليم",
       descripiton: "",
+      arDescripiton: "",
       items: [
         {
           duration: "MAR 2024",
@@ -351,8 +380,10 @@ export const about = {
   ;
   export const skills = {
     title: "My Skills",
+    arTitle: "المهارات",
     descripiton: 
     "I have many skills and able to use many tools and libraries that I will list below",
+    arDescripiton: "لدي العديد من المهارات واستطيع استعمال مختلف الادوات والمكتبات المذكورة بالأسفل",
     skillList: [
       {
         icon: <FaHtml5 />,
@@ -432,17 +463,30 @@ export const about = {
   export const info = [
     {
       icon: <FaPhoneAlt />,
-      title: "Phone",
-      description: "+968 79335801"
+      title: "Phone number",
+      description: "+96879335801",
+      arTitle: "رقم الهاتف",
+      arDescription: "+96879335801"
+    },
+    {
+      icon: <FaWhatsapp />,
+      title: "Whatsapp number",
+      link: "http://wa.me/+249995291772",
+      arTitle: "رقم الواتساب",
+      arLink: "http://wa.me/+249995291772",
     },
     {
       icon: <FaEnvelope />,
       title: "Email",
-      description: "amroalmutasim22@gmail.com"
+      description: "amroalmutasim22@gmail.com",
+      arTitle: "البريد الإلكتروني",
+      arDescription: "amroalmutasim22@gmail.com"
     },
     {
       icon: <FaMapMarkerAlt />,
       title: "Address",
-      description: "Alshifa Street, AlMawalih South, Oman"
+      description: "Alshifa Street, AlMawalih South, Oman",
+      arTitle: "العنوان",
+      arDescription: "شارع الشفاء, الموالح الجنوبية, سلطنة عمان"
     },
   ];

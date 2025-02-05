@@ -7,10 +7,11 @@ import AddProject from './AddProject';
 import { FaArrowLeft } from "react-icons/fa6";
 import { FaArrowRight } from "react-icons/fa6";
 import axios from 'axios'
+import { useTranslations } from 'next-intl';
 
 
 
-const ProjectsFilter = ({allProjects, frontEndProjects, fullStackProjects, email}) => {
+const ProjectsFilter = ({allProjects, frontEndProjects, fullStackProjects, email, locale}) => {
 
 const [projects, setProjects] = useState(fullStackProjects);
 
@@ -37,6 +38,8 @@ const [projects, setProjects] = useState(fullStackProjects);
 //           alert("You can't move left");
 //         }
 //       }
+     
+      const projectsPage = useTranslations('ProjectsPage')
 
   return (
 
@@ -47,23 +50,23 @@ const [projects, setProjects] = useState(fullStackProjects);
 <div className="flex sm:flex-row flex-col gap-5 sm:gap-0
  justify-between items-center">
 
-<AddProject email={email}  />
+<AddProject email={email} locale={locale}  />
 
 
 <div className="flex flex-row gap-5">
 <div id="filter-key"
 onClick={() => setProjects(allProjects)}>
-    All
+    {projectsPage('All')}
 </div>
 
 <div id="filter-key"
 onClick={() => setProjects(fullStackProjects)}>
-    Fullstack
+    {projectsPage('Fullstack')}
 </div>
 
 <div id="filter-key"
  onClick={() => setProjects(frontEndProjects)}>
-    Frontend
+    {projectsPage('Frontend')}
 </div>
 </div>
 
@@ -75,7 +78,7 @@ onClick={() => setProjects(fullStackProjects)}>
 max-sm:grid-cols-1 max-md:grid-cols-1 max-lg:grid-cols-2 max-xl:grid-cols-2">
 
     {projects.length > 0 && projects.map((project, index) => (
-        <Link key={index} href={`/projects/${project._id}`}
+        <Link key={index} href={`/${locale}/projects/${project._id}`}
         className=''>
          <div key={index} className="flex flex-col justify-start items-center
         bg-[#232329]/90 dark:bg-stone-700 gap-3 shadow-lg mb-3 transform hover:scale-[1.01] transition-all duration-300 ease-in-out

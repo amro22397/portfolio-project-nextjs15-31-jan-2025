@@ -26,12 +26,12 @@ export default function ThemeSwitch() {
     )
 
     if (resolvedTheme === 'dark') {
-        return <FiSun className="text-white ml-1 cursor-pointer active:scale-95" size={25}
+        return <FiSun className="text-white cursor-pointer active:scale-95" size={25}
         onClick={() => setTheme('light')} />
     }
 
     if (resolvedTheme === 'light') {
-        return <FiMoon className="text-black ml-1 cursor-pointer active:scale-95" size={25}
+        return <FiMoon className="text-black cursor-pointer active:scale-95" size={25}
          onClick={() => setTheme('dark')} />
     }
 }

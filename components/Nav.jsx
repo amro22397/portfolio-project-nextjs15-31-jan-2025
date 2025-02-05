@@ -14,7 +14,7 @@ const Nav = ({ locale }) => {
     
   return (
     <nav className={`flex flex-row justify-center items-center
-    ${locale === 'ar' ? 'xl:gap-4 gap-7' : 'gap-8'}`}>
+    ${locale === 'ar' ? 'xl:gap-4 gap-[14px] ' : 'gap-8'}`}>
         {links.map((link, index) => {
             const path = `/${locale}${link.path}`;
 

@@ -24,7 +24,8 @@
     "Back to projects" : "العودة إلى المشاريع",
     "Edit": "تعديل",
     "Delete": "حذف",
-    "Visit the website" : "قم بزيارة الموقع"
+    "Visit the website" : "قم بزيارة الموقع",
+    "DeleteProjectConfirm" : "هل أنت متأكد أنك تريد حذف المشروع ؟"
     
   },
 

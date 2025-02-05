@@ -11,7 +11,7 @@ const EditDeleteButtons = ({id, email, locale}) => {
     const route = useRouter();
 
     const handleProjectDelete = async () => {
-        const result = confirm('Are you sure you want to delete this project?')
+        const result = confirm(projectById("DeleteProjectConfirm"))
 
         if (!result) return
 

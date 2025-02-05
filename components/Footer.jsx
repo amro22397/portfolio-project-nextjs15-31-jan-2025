@@ -8,9 +8,12 @@ import ThemeSwitch from "./ThemeSwitch";
 import HireMe from "./HireMe";
 import ChangeLanguage from "./ChangeLanguage";
 import LogIn from "./LogIn";
+import { usePathname } from "next/navigation";
 
 const Footer = ({ email }) => {
   // const session = useSession();
+
+  const pathname = usePathname();
 
   return (
     <footer
@@ -33,7 +36,7 @@ const Footer = ({ email }) => {
       <div className="flex flex-row items-center gap-[12px]" dir="rtl">
 
       <div className="xl:hidden">
-      {!email && (
+      {!email && !pathname.includes("login") && (
           <LogIn />
         )}
       </div>

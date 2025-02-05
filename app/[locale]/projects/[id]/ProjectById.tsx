@@ -116,6 +116,7 @@ const ProjectById = ({
               className="text-[42px] font-bold leading-none text-black dark:text-white
                         group-hover:text-gray-700 transition-all duration-500 capitalize
                         mb-3"
+                        style={{fontFamily: "Arial, Helvetica, sans-serif"}}
             >
               {jProject.title}
             </h2>
@@ -123,17 +124,20 @@ const ProjectById = ({
             <button
               className="bg-yellow-600 px-2 py-1 border-solid border-2 border-black
                         w-[150px] text-white cursor-auto font-semibold"
+                        style={{fontFamily: "Arial, Helvetica, sans-serif"}}
             >
               {jProject.category}
             </button>
 
-            <p className="text-gray-700 dark:text-slate-100">{jProject.date}</p>
+            <p className="text-gray-700 dark:text-slate-100"
+            style={{fontFamily: "Arial, Helvetica, sans-serif"}}
+            >{jProject.date}</p>
 
             <div className="w-full">
               <p
                 className="text-gray-800 dark:text-slate-200 text-md whitespace-pre-line
                         "
-                style={{ fontFamily: "sans-serif" }}
+                        style={{fontFamily: "Arial, Helvetica, sans-serif"}}
               >
                 {jProject.description}
               </p>
@@ -149,6 +153,7 @@ const ProjectById = ({
                   className="bg-gray-300 px-4 py-[2.5px] rounded-full
                                 text-gray-800 hover:transform hover:scale-110 cursor-default transition-all duration-50
                                 hover:text-gray-900"
+                                style={{fontFamily: "Arial, Helvetica, sans-serif"}}
                 >
                   {tech}
                 </span>

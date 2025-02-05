@@ -178,7 +178,7 @@ const page = () => {
                           return (
                             <li
                               key={index}
-                              className="bg-[#232329]
+                              className="bg-[#232329]/90
                       dark:bg-neutral-700
                       py-6 px-10 rounded-xl flex flex-col justify-start items-center lg:items-start gap-1"
                             >
@@ -258,7 +258,7 @@ const page = () => {
                             <Tooltip className="left-to-right">
                               <TooltipTrigger
                                 id="skill-div"
-                                className="w-full h-[150px] bg-[#232329] dark:bg-neutral-700
+                                className="w-full h-[150px] bg-[#232329]/90 dark:bg-neutral-700
                           rounded-xl flex flex-col justify-center items-center group
                           cursor-auto"
                               >

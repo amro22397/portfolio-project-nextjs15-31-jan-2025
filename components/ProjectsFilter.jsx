@@ -60,11 +60,13 @@ onClick={() => setProjects(allProjects)}>
 </div>
 
 <div id="filter-key"
+style={{fontFamily: "Arial, Helvetica, sans-serif"}}
 onClick={() => setProjects(fullStackProjects)}>
     {projectsPage('Fullstack')}
 </div>
 
 <div id="filter-key"
+style={{fontFamily: "Arial, Helvetica, sans-serif"}}
  onClick={() => setProjects(frontEndProjects)}>
     {projectsPage('Frontend')}
 </div>
@@ -97,18 +99,20 @@ max-sm:grid-cols-1 max-md:grid-cols-1 max-lg:grid-cols-2 max-xl:grid-cols-2">
             )} */}
             
 
-            <h2 className="text-2xl font-semibold text-orange-400">{project.title}</h2>
+            <h2 className="text-2xl font-semibold text-orange-400"
+            style={{fontFamily: "Arial, Helvetica, sans-serif"}}>{project.title}</h2>
 
             <button className="bg-yellow-600 px-2 py-0 border-solid
-                w-[150px] text-white cursor-auto font-semibold">
+                w-[150px] text-white cursor-auto font-semibold"
+                style={{fontFamily: "Arial, Helvetica, sans-serif"}}>
                 {project.category}
                 </button>
 
             <div className="flex flex-col justify-between items-center
              mb-4 gap-4 px-6 py-2 overflow-hidden hover:overflow-auto">
 
-                <p className="text-sm text-white
-                " style={{fontFamily: "sans-serif"}}>{project.description}</p>
+                <p className="text-sm text-white text-center
+                " style={{fontFamily: "Arial, Helvetica, sans-serif"}}>{project.description}</p>
 
             
             </div>

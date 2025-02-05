@@ -56,7 +56,7 @@ const Header = ({ email, locale }) => {
           className=" flex flex-row gap-[17.75px] items-center
         xl:mb-0 mt-1 mb-8"
         >
-          {!email && (
+          {!email && !pathname.includes("login") && (
             <LogIn />
           )}
 

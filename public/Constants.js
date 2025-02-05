@@ -285,6 +285,12 @@ export const about = {
         arFieldValue: "سوداني"
       },
       {
+        fieldName: "Religon",
+        fieldValue: "Islam",
+        arFieldName: "الديانة",
+        arFieldValue: "الإسلام"
+      },
+      {
         fieldName: "Email",
         fieldValue: "amroalmutasim22@gmail.com",
         arFieldName: "البريد الإلكتروني",

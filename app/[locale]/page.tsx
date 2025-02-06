@@ -100,7 +100,7 @@ const page = async () => {
                active:scale-95 py-6 rounded-full
               text-white ${locale === 'ar' ? 'text-md' : 'text-md font-semibold'}`}
               >
-                <Link href="/resume-22-oct.pdf" target='_blank'>{homePage('Download CV')}</Link>
+                <Link href="/RESUME 6-FEB-2025 (Web Developer).pdf" target='_blank'>{homePage('Download CV')}</Link>
                 <FiDownload className='text-xl' />
               </Button>
                         

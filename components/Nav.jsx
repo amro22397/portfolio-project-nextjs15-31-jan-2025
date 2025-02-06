@@ -15,6 +15,7 @@ const Nav = ({ locale }) => {
   return (
     <nav className={`flex flex-row justify-center items-center
     ${locale === 'ar' ? 'xl:gap-9 gap-[10px] ' : 'gap-8'}`}>
+        <div className={`${locale === 'ar' ? 'grid grid-cols-2 gap-x-12 gap-y-[17px] xl:flex xl:flex--row xl:justify-center xl:items-center xl:gap-9 ' : 'flex flex-row justify-center items-center gap-8'}`}>
         {links.map((link, index) => {
             const path = `/${locale}${link.path}`;
 
@@ -28,6 +29,7 @@ const Nav = ({ locale }) => {
                 </Link>
             )
         })}
+        </div>
     </nav>
   )
 }

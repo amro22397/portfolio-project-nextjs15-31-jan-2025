@@ -62,8 +62,8 @@ const page = async () => {
                 
                 {homePage('MyName')}</span>
 
-            <span className='text-gray-600 dark:text-zinc-100 text-3xl
-            max-xl:text-center'>{homePage('role')}</span>
+            <span className={`text-gray-600 dark:text-zinc-100 text-3xl
+            max-xl:text-center ${locale === 'ar' && 'mx-2'}`}>{homePage('role')}</span>
 
             <div className="mt-2 max-sm:mt-4">
               <div className={`grid md:grid-cols-8 lg:grid-cols-11 lg:gap-y-8 xl:grid-cols-7

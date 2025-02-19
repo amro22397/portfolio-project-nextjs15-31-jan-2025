@@ -15,7 +15,7 @@ const Nav = ({ locale }) => {
   return (
     <nav className={`flex flex-row justify-center items-center
     ${locale === 'ar' ? 'xl:gap-9 gap-[10px] ' : 'gap-8'}`}>
-        <div className={`${locale === 'ar' ? 'grid grid-cols-2 gap-x-12 gap-y-[17px] xl:flex xl:flex--row justify-center items-center xl:gap-9 text-center' : 'flex flex-row justify-center items-center gap-8 text-center'}`}>
+        <div className={`${locale === 'ar' ? 'grid grid-cols-2 gap-x-12 gap-y-[17px] xl:flex xl:flex--row justify-center items-center 2xl:gap-8 xl:gap-5 text-center' : 'flex flex-row justify-center items-center gap-8 text-center'}`}>
         {links.map((link, index) => {
             const path = `/${locale}${link.path}`;
 
@@ -24,7 +24,7 @@ const Nav = ({ locale }) => {
                     "border-b-2 text-gray-950 border-gray-950 dark:text-white dark:border-slate-200"
                     } text-gray-800 hover:text-gray-900 dark:text-slate-100 dark:hover:text-slate-200
                     transition-all duration-500
-                    ${locale === 'ar' ? 'text-[14.5px]' : 'text-[18px]'}`}>
+                    ${locale === 'ar' ? 'text-[14.5px] 2xl:text-[16px] xl:text-[13px] sm:text-[22px]' : 'text-[18px]'}`}>
                     {pathname.includes("en") ? link.name : link.arName}
                 </Link>
             )
